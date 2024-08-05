@@ -1,0 +1,32 @@
+.btn-add-to-cart {
+    background-color: black; 
+    color: white; 
+    border: none; 
+    padding: 0.5rem 1rem; 
+    font-size: 1rem; 
+    cursor: pointer; 
+  }
+  
+  .btn-add-to-cart:hover {
+    background-color: #333; 
+  }
+  
+  .card-title {
+    font-weight: bold; 
+  }
+  
+  .card-subtitle {
+    font-size: 1.1rem; 
+    color: #6c757d;
+    margin-bottom: 0.5rem; 
+  }
+  
+  .list-unstyled {
+    padding-left: 0; 
+  }
+  
+  .ingredient-item {
+    font-size: 1rem; 
+    margin-bottom: 0.5rem; 
+  }
+  

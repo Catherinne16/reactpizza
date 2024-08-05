@@ -1,0 +1,20 @@
+.header-container {
+    background-color: #f8f9fa; 
+    padding: 3rem 1.5rem; 
+    text-align: center; 
+  }
+  
+  .header-title {
+    font-size: 4rem; 
+    font-weight: bold; 
+    color: #ffd700; 
+    margin-bottom: 0.5rem; 
+  }
+  
+  .header-subtitle {
+    font-size: 1.2rem; 
+    color: white; 
+    max-width: 800px; 
+    margin: 0 auto; 
+  }
+  
