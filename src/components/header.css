@@ -1,20 +1,51 @@
+/* src/components/Header.css */
+
 .header-container {
-    background-color: #f8f9fa; 
-    padding: 3rem 1.5rem; 
-    text-align: center; 
-  }
-  
-  .header-title {
-    font-size: 4rem; 
-    font-weight: bold; 
-    color: #ffd700; 
-    margin-bottom: 0.5rem; 
-  }
-  
-  .header-subtitle {
-    font-size: 1.2rem; 
-    color: white; 
-    max-width: 800px; 
-    margin: 0 auto; 
-  }
-  
+  background-image: url('https://st4.depositphotos.com/3316741/22997/i/450/depositphotos_229976142-stock-photo-pizza-with-tomatoes-mozzarella-cheese.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  background-color: #cc1f1f !important; /* Asegura el color de fondo rojo en caso de que la imagen no cargue */
+  font-family: cursive;
+}
+
+.header-title {
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.header-subtitle {
+  font-size: 1.2rem;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 1;
+  text-align: center;
+}
+
+.header-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay oscuro */
+  z-index: 0;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-weight: bold;
+  margin-left: 47%;
+}
