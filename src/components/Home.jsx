@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <div className="d-flex justify-content-around">
+      <div className="d-flex justify-content-around main-content">
         <CardPizza
           name="Napolitana"
           price={5950}
