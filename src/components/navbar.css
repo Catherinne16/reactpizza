@@ -1,28 +1,38 @@
-
+/* src/components/Navbar.css */
 .navbar {
-    background-color: red !important; 
-    font-family: cursive;
-  }
-  
-  .navbar-brand {
-    color: white !important;
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  
-  .navbar-nav .nav-item .nav-link {
-    color: white !important;
-    font-size: 1.2rem;
-  }
-  
-  .navbar-nav .nav-item .nav-link:hover {
-    color: #ffc107 !important; 
-  }
-  
-  .navbar-toggler {
-    border-color: white !important;
-  }
-  
-  .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28white, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
-  }
+  background-color: red !important;
+  font-family: cursive;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: white !important;
+  font-size: 1.2rem;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #ffc107 !important;
+}
+
+.navbar-toggler {
+  border-color: white !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28white, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+}
+
+.btn-outline-light {
+  color: white !important;
+  border-color: white !important;
+}
+
+.btn-outline-light:hover {
+  background-color: white !important;
+  color: red !important;
+}

@@ -1,7 +1,8 @@
+// src/components/CardPizza.jsx
 import React from 'react';
 import './CardPizza.css';
 
-const CardPizza = ({ name, price, ingredients, img }) => {
+const CardPizza = ({ name, price, ingredients, img, addToCart }) => {
   return (
     <div className="card" style={{ width: '18rem' }}>
       <img src={img} className="card-img-top" alt={name} />
@@ -17,7 +18,7 @@ const CardPizza = ({ name, price, ingredients, img }) => {
         </ul>
         <div className="d-flex justify-content-between align-items-center">
           <p className="card-text mb-0">Precio: ${price}</p>
-          <button className="btn-add-to-cart">
+          <button className="btn-add-to-cart" onClick={addToCart}>
             🛒 Añadir
           </button>
         </div>

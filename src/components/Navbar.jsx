@@ -1,9 +1,9 @@
+// src/components/Navbar.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
-  const total = 25000;
+const Navbar = ({ toggleCart }) => {
   const token = false; // Esto debería venir del estado global o contexto
 
   return (
@@ -37,7 +37,7 @@ const Navbar = () => {
             </>
           )}
           <li className="nav-item">
-            <span className="nav-link">🛒 Total: ${total}</span>
+            <button className="nav-link" onClick={toggleCart}>🛒</button>
           </li>
         </ul>
       </div>
