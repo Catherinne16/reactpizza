@@ -1,6 +1,7 @@
+/* Contenedor del mini carrito */
 .mini-cart {
   position: fixed;
-  top: 70px; /* Aligns with the navbar */
+  top: 70px; /* Alinea con la barra de navegación */
   right: 10px;
   width: 260px;
   max-height: 70vh;
@@ -11,15 +12,17 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease;
-  transform: translateX(100%);
+  transform: translateX(100%); /* Inicialmente oculto a la derecha */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Mostrar el mini carrito cuando la clase 'open' está activa */
 .mini-cart-wrapper.open .mini-cart {
   transform: translateX(0);
 }
 
+/* Botón para cerrar el mini carrito */
 .btn-close {
   position: absolute;
   top: 10px;
@@ -31,6 +34,7 @@
   color: #333;
 }
 
+/* Elemento del carrito */
 .cart-item {
   display: flex;
   align-items: center;
@@ -39,6 +43,7 @@
   padding-bottom: 0.5rem;
 }
 
+/* Imagen del elemento del carrito */
 .cart-item-img {
   width: 60px;
   height: 60px;
@@ -46,21 +51,25 @@
   border-radius: 6px;
 }
 
+/* Detalles del elemento del carrito */
 .cart-item-details {
   flex: 1;
 }
 
+/* Lista de ingredientes del elemento del carrito */
 .ingredients-list {
   padding-left: 1rem;
   font-size: 0.85rem;
   color: #242424;
 }
 
+/* Controles de cantidad */
 .quantity-controls {
   display: flex;
   gap: 0.5rem;
 }
 
+/* Botones de control de cantidad */
 .quantity-controls button {
   background-color: #ff6347;
   color: white;
@@ -75,11 +84,13 @@
   background-color: #e55342;
 }
 
+/* Pie de página del carrito */
 .cart-footer {
   text-align: center;
   margin-top: 1rem;
 }
 
+/* Botón para pagar */
 .btn-pay {
   background-color: #2e8b57;
   color: white;

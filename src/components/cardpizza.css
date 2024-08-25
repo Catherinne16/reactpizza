@@ -1,32 +1,43 @@
+/* src/components/CardPizza.css */
+
+/* Botón de añadir al carrito */
 .btn-add-to-cart {
-    background-color: black; 
-    color: white; 
-    border: none; 
-    padding: 0.5rem 1rem; 
-    font-size: 1rem; 
-    cursor: pointer; 
-  }
-  
-  .btn-add-to-cart:hover {
-    background-color: #333; 
-  }
-  
-  .card-title {
-    font-weight: bold; 
-  }
-  
-  .card-subtitle {
-    font-size: 1.1rem; 
-    color: #6c757d;
-    margin-bottom: 0.5rem; 
-  }
-  
-  .list-unstyled {
-    padding-left: 0; 
-  }
-  
-  .ingredient-item {
-    font-size: 1rem; 
-    margin-bottom: 0.5rem; 
-  }
-  
+  background-color: black; 
+  color: white; 
+  border: none; 
+  padding: 0.5rem 1rem; 
+  font-size: 1rem; 
+  cursor: pointer; 
+}
+
+.btn-add-to-cart:hover {
+  background-color: #333; 
+}
+
+/* Título de la pizza */
+.card-title {
+  font-weight: bold; 
+}
+
+/* Subtítulo de ingredientes */
+.card-subtitle {
+  font-size: 1.1rem; 
+  color: #6c757d;
+  margin-bottom: 0.5rem; 
+}
+
+/* Lista de ingredientes */
+.list-unstyled {
+  padding-left: 0; 
+}
+
+/* Elementos de ingredientes */
+.ingredient-item {
+  font-size: 1rem; 
+  margin-bottom: 0.5rem; 
+}
+
+/* Ajustes de diseño de las tarjetas */
+.card {
+  margin-bottom: 1.5rem; /* Espacio entre tarjetas */
+}

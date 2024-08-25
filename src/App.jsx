@@ -1,7 +1,7 @@
-// src/App.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Register from './pages/register';
@@ -10,9 +10,9 @@ import MiniCart from './components/mini-cart';
 import './index.css';
 
 const App = () => {
-  const [registeredUser, setRegisteredUser] = useState(null);
-  const [cart, setCart] = useState([]);
-  const [isCartVisible, setIsCartVisible] = useState(false);
+  const [registeredUser, setRegisteredUser] = React.useState(null);
+  const [cart, setCart] = React.useState([]);
+  const [isCartVisible, setIsCartVisible] = React.useState(false);
 
   const handleRegister = (user) => {
     setRegisteredUser(user);
@@ -53,10 +53,12 @@ const App = () => {
     <Router>
       <div>
         <Navbar toggleCart={toggleCart} />
+        <Header />
         <Routes>
           <Route path="/" element={<Home addToCart={addToCart} />} />
           <Route path="/register" element={<Register onRegister={handleRegister} />} />
           <Route path="/login" element={<Login registeredUser={registeredUser} />} />
+          {/* Añadir otras rutas si es necesario */}
         </Routes>
         <Footer />
         <div className={`mini-cart-wrapper ${isCartVisible ? 'open' : ''}`}>

@@ -1,0 +1,24 @@
+/* src/components/Home.css */
+
+.main-content {
+    margin-top: 3rem; /* Ajusta este valor según lo necesites */
+    padding: 1 2rem; /* Opcional: Añade padding horizontal para un mejor espaciado en dispositivos móviles */
+  }
+  
+  .card {
+    margin-bottom: 1.5rem; /* Espacio entre tarjetas */
+  }
+  
+  /* src/components/Home.css */
+
+.main-content {
+    margin-top: 3rem; /* Ajusta el valor según tus necesidades */
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    margin-bottom: 1.5rem; /* Espacio entre tarjetas */
+  }
+  
+  
+  

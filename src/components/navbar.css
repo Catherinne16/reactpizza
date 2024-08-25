@@ -1,4 +1,5 @@
 /* src/components/Navbar.css */
+
 .navbar {
   background-color: red !important;
   font-family: cursive;
@@ -8,6 +9,11 @@
   color: white !important;
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+.navbar-nav {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .navbar-nav .nav-item .nav-link {
@@ -35,4 +41,13 @@
 .btn-outline-light:hover {
   background-color: white !important;
   color: red !important;
+}
+
+/* Centrando el navbar en pantallas grandes */
+@media (min-width: 992px) {
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
 }

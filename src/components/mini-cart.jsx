@@ -1,37 +1,46 @@
+// src/components/MiniCart.jsx
 import React from 'react';
 import './mini-cart.css';
 
 const MiniCart = ({ cart, updateCart, onClose }) => {
-  const total = cart.reduce((sum, pizza) => sum + pizza.price * pizza.quantity, 0);
+  const handleIncrease = (id) => {
+    updateCart(id, 1);
+  };
+
+  const handleDecrease = (id) => {
+    updateCart(id, -1);
+  };
+
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
 
   return (
     <div className="mini-cart">
       <button className="btn-close" onClick={onClose}></button>
-      <h4>Carrito</h4>
-      <ul className="list-unstyled">
-        {cart.map((pizza) => (
-          <li key={pizza.id} className="cart-item">
-            <img src={pizza.img} alt={pizza.name} className="cart-item-img" />
+      {cart.length === 0 ? (
+        <p>No hay productos en el carrito.</p>
+      ) : (
+        cart.map((item) => (
+          <div key={item.id} className="cart-item">
+            <img src={item.img} alt={item.name} className="cart-item-img" />
             <div className="cart-item-details">
-              <h5>{pizza.name}</h5>
-              <ul className="ingredients-list">
-                {pizza.ingredients.map((ingredient, index) => (
-                  <li key={index}>{ingredient}</li>
-                ))}
-              </ul>
-              <p>Precio: ${pizza.price}</p>
-              <p>Cantidad: {pizza.quantity}</p>
+              <h6>{item.name}</h6>
+              <p className="ingredients-list">
+                {item.ingredients.join(', ')}
+              </p>
               <div className="quantity-controls">
-                <button onClick={() => updateCart(pizza.id, 1)} className="quantity-btn">+</button>
-                <button onClick={() => updateCart(pizza.id, -1)} className="quantity-btn">-</button>
+                <button onClick={() => handleDecrease(item.id)}>-</button>
+                <span>{item.quantity}</span>
+                <button onClick={() => handleIncrease(item.id)}>+</button>
               </div>
             </div>
-          </li>
-        ))}
-      </ul>
+          </div>
+        ))
+      )}
       <div className="cart-footer">
-        <h5>Total: ${total}</h5>
-        <button className="btn btn-dark-green">Pagar</button>
+        <p>Total: ${calculateTotal()}</p>
+        <button className="btn-pay">Pagar</button>
       </div>
     </div>
   );

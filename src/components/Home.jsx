@@ -1,52 +1,53 @@
 // src/components/Home.jsx
-import React from 'react';
-import Header from './Header';
+import React, { useEffect, useState } from 'react';
 import CardPizza from './CardPizza';
+import './Home.css';
 
 const Home = ({ addToCart }) => {
+  const [pizzas, setPizzas] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPizzas = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/pizzas');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPizzas(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPizzas();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
-    <div>
-      <Header />
-      <div className="d-flex justify-content-around main-content">
-        <CardPizza
-          name="Napolitana"
-          price={5950}
-          ingredients={["mozzarella", "tomates", "jamón", "orégano"]}
-          img="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_cl.jpg?alt=media&token=6a9a33da-5c00-49d4-9080-784dcc87ec2c"
-          addToCart={() => addToCart({
-            id: 1,
-            name: "Napolitana",
-            price: 5950,
-            ingredients: ["mozzarella", "tomates", "jamón", "orégano"],
-            img: "https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_cl.jpg?alt=media&token=6a9a33da-5c00-49d4-9080-784dcc87ec2c",
-          })}
-        />
-        <CardPizza
-          name="Española"
-          price={6950}
-          ingredients={["mozzarella", "gorgonzola", "parmesano", "provolone"]}
-          img="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fcheese-164872_640_com.jpg?alt=media&token=18b2b821-4d0d-43f2-a1c6-8c57bc388fab"
-          addToCart={() => addToCart({
-            id: 2,
-            name: "Española",
-            price: 6950,
-            ingredients: ["mozzarella", "gorgonzola", "parmesano", "provolone"],
-            img: "https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fcheese-164872_640_com.jpg?alt=media&token=18b2b821-4d0d-43f2-a1c6-8c57bc388fab",
-          })}
-        />
-        <CardPizza
-          name="Pepperoni"
-          price={6950}
-          ingredients={["mozzarella", "pepperoni", "orégano"]}
-          img="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_com.jpg?alt=media&token=e7cde87a-08d5-4040-ac54-90f6c31eb3e3"
-          addToCart={() => addToCart({
-            id: 3,
-            name: "Pepperoni",
-            price: 6950,
-            ingredients: ["mozzarella", "pepperoni", "orégano"],
-            img: "https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_com.jpg?alt=media&token=e7cde87a-08d5-4040-ac54-90f6c31eb3e3",
-          })}
-        />
+    <div className="container mt-4">
+      <div className="row">
+        {pizzas.length > 0 ? (
+          pizzas.map(pizza => (
+            <div className="col-md-4 mb-4" key={pizza.id}>
+              <CardPizza
+                name={pizza.name}
+                price={pizza.price}
+                ingredients={pizza.ingredients}
+                img={pizza.img}
+                addToCart={() => addToCart(pizza)}
+              />
+            </div>
+          ))
+        ) : (
+          <p>No hay pizzas disponibles.</p>
+        )}
       </div>
     </div>
   );
