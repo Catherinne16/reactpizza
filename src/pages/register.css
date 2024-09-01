@@ -1,12 +1,12 @@
 /* src/components/register.css */
 .register-container {
     max-width: 400px;
-    margin: 50px auto; /* Añadido margen superior para separación */
+    margin: 50px auto; 
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* Color de fondo para mejorar contraste */
+    background-color: #fff; 
 }
 
 .register-container h2 {

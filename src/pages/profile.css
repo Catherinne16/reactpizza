@@ -1,0 +1,38 @@
+.profile-container {
+    background: linear-gradient(45deg, #fff, #c0c0c0);
+    border: 2px solid #125006; 
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  
+  .profile-title {
+    color: #0e6e1a; 
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-email {
+    color: #110a00; 
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-button {
+    background-color: #c8102e; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .profile-button:hover {
+    background-color: #a70025; 
+  }
+  

@@ -1,8 +1,11 @@
 // src/components/MiniCart.jsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import './mini-cart.css';
 
 const MiniCart = ({ cart, updateCart, onClose }) => {
+  const navigate = useNavigate(); // Inicializa useNavigate
+
   const handleIncrease = (id) => {
     updateCart(id, 1);
   };
@@ -13,6 +16,10 @@ const MiniCart = ({ cart, updateCart, onClose }) => {
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  const handlePayClick = () => {
+    navigate('/cart'); // Redirige al usuario a la página del carrito
   };
 
   return (
@@ -40,7 +47,7 @@ const MiniCart = ({ cart, updateCart, onClose }) => {
       )}
       <div className="cart-footer">
         <p>Total: ${calculateTotal()}</p>
-        <button className="btn-pay">Pagar</button>
+        <button className="btn-pay" onClick={handlePayClick}>Ir a Pagar</button>
       </div>
     </div>
   );

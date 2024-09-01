@@ -1,7 +1,7 @@
 // src/components/Register.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './register.css'; // Asegúrate de que esta ruta sea correcta
+import './register.css'; 
 
 const Register = ({ onRegister }) => {
     const [email, setEmail] = useState('');

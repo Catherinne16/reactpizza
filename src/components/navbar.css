@@ -19,10 +19,12 @@
 .navbar-nav .nav-item .nav-link {
   color: white !important;
   font-size: 1.2rem;
+  padding: 0.5rem 1rem; /* Espaciado adicional para mejorar el área de clic */
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-  color: #ffc107 !important;
+  color: #ffc107 !important; /* Amarillo dorado para el hover */
+  text-decoration: underline; /* Subrayado en el hover para mejor visibilidad */
 }
 
 .navbar-toggler {
@@ -40,7 +42,7 @@
 
 .btn-outline-light:hover {
   background-color: white !important;
-  color: red !important;
+  color: #ff6347 !important; /* Rojo tomate para el hover */
 }
 
 /* Centrando el navbar en pantallas grandes */
@@ -51,3 +53,4 @@
     flex-direction: row;
   }
 }
+

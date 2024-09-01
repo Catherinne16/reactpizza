@@ -1,0 +1,94 @@
+/* src/components/cartt.css */
+
+.cart-wrapper {
+    width: 100%;
+    height: 100%;
+    background: #ffffff; /* Blanco de fondo */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .cart-header {
+    color: #ff6347; /* Rojo tomate */
+    margin: 0 0 20px 0;
+    font-size: 2rem;
+  }
+  
+  .cart-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .cart-item-details {
+    flex: 1;
+  }
+  
+  .cart-item-name {
+    font-weight: bold;
+  }
+  
+  .cart-item-quantity,
+  .cart-item-price {
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn-adjust {
+    background-color: #ff6347; /* Rojo tomate */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .btn-adjust:hover {
+    background-color: #e55347; /* Rojo tomate oscuro */
+  }
+  
+  .cart-total {
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .btn-pay {
+    background-color: #ff6347; /* Rojo tomate */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+  }
+  
+  .btn-pay:hover {
+    background-color: #e55347; /* Rojo tomate oscuro */
+  }
+  
