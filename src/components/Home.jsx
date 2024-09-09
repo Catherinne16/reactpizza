@@ -1,10 +1,12 @@
-// src/components/Home.jsx
 import React, { useEffect, useState } from 'react';
+import { usePizzas } from '../context/PizzaContext';
+import { useCart } from '../context/CartContext';
 import CardPizza from './CardPizza';
-import './Home.css';
+import '../components/home.css';
 
-const Home = ({ addToCart }) => {
-  const [pizzas, setPizzas] = useState([]);
+const Home = () => {
+  const { pizzas2, setPizzas2 } = usePizzas(); // Obtener pizzas y función de actualización del contexto
+  const { addToCart } = useCart();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,7 +18,7 @@ const Home = ({ addToCart }) => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setPizzas(data);
+        setPizzas2(data); // Actualizar el contexto con los datos obtenidos
       } catch (error) {
         setError(error.message);
       } finally {
@@ -25,7 +27,7 @@ const Home = ({ addToCart }) => {
     };
 
     fetchPizzas();
-  }, []);
+  }, [setPizzas2]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -33,8 +35,8 @@ const Home = ({ addToCart }) => {
   return (
     <div className="container mt-4">
       <div className="row">
-        {pizzas.length > 0 ? (
-          pizzas.map(pizza => (
+        {pizzas2.length > 0 ? (
+          pizzas2.map(pizza => (
             <div className="col-md-4 mb-4" key={pizza.id}>
               <CardPizza
                 name={pizza.name}

@@ -1,5 +1,5 @@
-// src/components/CardPizza.jsx
 import React from 'react';
+import PropTypes from 'prop-types';
 import './CardPizza.css';
 
 const CardPizza = ({ name, price, ingredients, img, addToCart }) => {
@@ -25,6 +25,14 @@ const CardPizza = ({ name, price, ingredients, img, addToCart }) => {
       </div>
     </div>
   );
+};
+
+CardPizza.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+  img: PropTypes.string.isRequired,
+  addToCart: PropTypes.func.isRequired
 };
 
 export default CardPizza;

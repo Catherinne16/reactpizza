@@ -1,9 +1,12 @@
-// Cart.jsx
 import React from 'react';
+import { useCart } from '../context/CartContext';
 import './cartt.css';
 
-const Cart = ({ cart, updateCart }) => {
-  const total = cart.reduce((acc, pizza) => acc + pizza.price * pizza.quantity, 0);
+const Cart = () => {
+  const { cart, removeFromCart, getTotal, updateQuantity } = useCart(); // Usar contexto
+
+  // Usar getTotal para calcular el total
+  const total = getTotal();
 
   return (
     <div className="cart-wrapper">
@@ -20,15 +23,16 @@ const Cart = ({ cart, updateCart }) => {
                 <span className="cart-item-quantity">Cantidad: {pizza.quantity}</span>
                 <span className="cart-item-price">Precio: ${pizza.price}</span>
                 <div className="quantity-controls">
-                  <button className="btn-adjust" onClick={() => updateCart(pizza.id, -1)}>-</button>
-                  <button className="btn-adjust" onClick={() => updateCart(pizza.id, 1)}>+</button>
+                  <button className="btn-adjust" onClick={() => updateQuantity(pizza.id, -1)}>-</button>
+                  <button className="btn-adjust" onClick={() => updateQuantity(pizza.id, 1)}>+</button>
+                  <button className="btn-remove" onClick={() => removeFromCart(pizza.id)}>Eliminar</button>
                 </div>
               </div>
             </li>
           ))}
         </ul>
       )}
-      <h3 className="cart-total">Total: ${total}</h3>
+      <h3 className="cart-total">Total: ${total.toFixed(2)}</h3>
       {cart.length > 0 && <button className="btn-pay">Pagar</button>}
     </div>
   );

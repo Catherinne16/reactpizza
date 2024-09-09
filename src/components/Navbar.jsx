@@ -1,9 +1,12 @@
 import React from 'react';
+import { useCart } from '../context/CartContext'; // Asegúrate de que esta ruta sea correcta
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ toggleCart }) => {
   const token = false; // Esto debería venir del estado global o contexto
+  const { getTotal } = useCart(); // Obtén el total del carrito
+  const total = getTotal(); // Calcula el total del carrito
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
@@ -37,7 +40,9 @@ const Navbar = ({ toggleCart }) => {
               </>
             )}
             <li className="nav-item">
-              <button className="btn btn-outline-light" onClick={toggleCart}>🛒</button>
+              <button className="btn btn-outline-light" onClick={toggleCart}>
+                🛒 ${total.toFixed(2)}
+              </button>
             </li>
           </ul>
         </div>

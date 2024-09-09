@@ -1,11 +1,13 @@
-// src/components/Pizza.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { usePizzas } from '../context/PizzaContext';
 import './Pizza.css'; 
 
 const Pizza = () => {
   const { id } = useParams();
   const [pizza, setPizza] = useState(null);
+  const { pizzas2 } = usePizzas();
+  
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/pizzas/p001`)

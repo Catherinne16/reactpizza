@@ -1,32 +1,29 @@
-// src/components/MiniCart.jsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext'; 
 import './mini-cart.css';
 
-const MiniCart = ({ cart, updateCart, onClose }) => {
-  const navigate = useNavigate(); // Inicializa useNavigate
+const MiniCart = ({ onClose }) => {
+  const navigate = useNavigate();
+  const { cart, updateQuantity, getTotal } = useCart(); 
 
   const handleIncrease = (id) => {
-    updateCart(id, 1);
+    updateQuantity(id, 1);
   };
 
   const handleDecrease = (id) => {
-    updateCart(id, -1);
-  };
-
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    updateQuantity(id, -1);
   };
 
   const handlePayClick = () => {
-    navigate('/cart'); // Redirige al usuario a la página del carrito
+    navigate('/cart');
   };
 
   return (
     <div className="mini-cart">
       <button className="btn-close" onClick={onClose}></button>
       {cart.length === 0 ? (
-        <p>No hay productos en el carrito.</p>
+        <p>Carrito Vacio!</p>
       ) : (
         cart.map((item) => (
           <div key={item.id} className="cart-item">
@@ -46,7 +43,7 @@ const MiniCart = ({ cart, updateCart, onClose }) => {
         ))
       )}
       <div className="cart-footer">
-        <p>Total: ${calculateTotal()}</p>
+        <p>Total: ${getTotal()}</p>
         <button className="btn-pay" onClick={handlePayClick}>Ir a Pagar</button>
       </div>
     </div>
