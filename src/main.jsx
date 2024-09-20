@@ -1,25 +1,25 @@
 // src/main.jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'; 
 import App from './App';
-import './index.css'; 
+import { UserProvider } from './context/UserContext';
 import { PizzaProvider } from './context/PizzaContext';
 import { CartProvider } from './context/CartContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importa Bootstrap CSS
 
-const root = ReactDOM.createRoot(document.getElementById('app'));root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-);
+
+const root = ReactDOM.createRoot(document.getElementById('app')); // Usa createRoot para React 18
 
 ReactDOM.render(
   <React.StrictMode>
-    <PizzaProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </PizzaProvider>
+    <UserProvider>
+      <PizzaProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </PizzaProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('app')
 );

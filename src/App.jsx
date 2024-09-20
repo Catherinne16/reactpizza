@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -13,17 +13,17 @@ import NotFound from './components/Nfound';
 import MiniCart from './components/mini-cart';
 import { PizzaProvider } from './context/PizzaContext';
 import { CartProvider } from './context/CartContext';
+import { useUser } from './context/UserContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import PizzaContainer from './components/PizzaContainer';
 import './index.css';
 
 const App = () => {
-  const [isCartVisible, setIsCartVisible] = React.useState(false);
+  const { token } = useUser();
+  const [isCartVisible, setIsCartVisible] = useState(false);
 
   const toggleCart = () => {
-    setIsCartVisible(prev => !prev);
-  };
-
-  const closeCart = () => {
-    setIsCartVisible(false);
+    setIsCartVisible(!isCartVisible);
   };
 
   return (
@@ -35,17 +35,18 @@ const App = () => {
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={token ? <Navigate to="/" /> : <Register />} />
+              <Route path="/login" element={token ? <Navigate to="/" /> : <Login />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/pizza/p001" element={<Pizza />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
               <Route path="/404" element={<NotFound />} />
               <Route path="*" element={<Navigate to="/404" />} />
+              <Route path="/pizza/:id" element={<Pizza />} /> {/* Ruta para los detalles de la pizza */}
             </Routes>
             <Footer />
             <div className={`mini-cart-wrapper ${isCartVisible ? 'open' : ''}`}>
-              <MiniCart onClose={closeCart} />
+              <MiniCart onClose={toggleCart} />
             </div>
           </div>
         </CartProvider>
@@ -53,7 +54,5 @@ const App = () => {
     </Router>
   );
 };
-
-
 
 export default App;

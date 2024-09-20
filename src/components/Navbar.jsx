@@ -1,13 +1,20 @@
 import React from 'react';
-import { useCart } from '../context/CartContext'; // Asegúrate de que esta ruta sea correcta
-import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext'; 
+import { useUser } from '../context/UserContext'; 
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ toggleCart }) => {
-  const token = false; // Esto debería venir del estado global o contexto
-  const { getTotal } = useCart(); // Obtén el total del carrito
-  const total = getTotal(); // Calcula el total del carrito
+  const { getTotal } = useCart(); 
+  const total = getTotal(); 
+  const { token, logout } = useUser();
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    logout();
+    navigate('/'); 
+  };
+  
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
@@ -26,7 +33,7 @@ const Navbar = ({ toggleCart }) => {
                   <Link className="nav-link" to="/profile">🔓 Profile</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/logout">🔒 Logout</Link>
+                  <button className="nav-link btn" onClick={handleLogout}>🔒 Logout</button>
                 </li>
               </>
             ) : (

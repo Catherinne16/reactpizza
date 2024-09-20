@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext'; 
 import './mini-cart.css';
@@ -6,6 +6,7 @@ import './mini-cart.css';
 const MiniCart = ({ onClose }) => {
   const navigate = useNavigate();
   const { cart, updateQuantity, getTotal } = useCart(); 
+  const CartContext = createContext();
 
   const handleIncrease = (id) => {
     updateQuantity(id, 1);
