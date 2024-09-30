@@ -1,12 +1,24 @@
-import React from 'react';
-import './Profile.css'; 
+import { useEffect, useState } from "react";
+import { useUser } from '../context/UserContext';
+import './profile.css';
 
 const Profile = () => {
+  const { email, logout, getProfile } = useUser();
+  const [profileData, setProfileData] = useState(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const data = await getProfile();
+      setProfileData(data);
+    };
+    fetchProfile();
+  }, [getProfile]);
+
   return (
     <div className="profile-container">
-      <h1 className="profile-title">Perfil de Usuario</h1>
-      <p className="profile-email">Email: pizzapizza@mamamia.cl</p>
-      <button className="profile-button" onClick={() => alert('Cerrando sesión...')}>Cerrar sesión</button>
+      <h1>Profile</h1>
+      {profileData && <p>Email: {profileData.email}</p>}
+      <button onClick={logout}>Logout</button>
     </div>
   );
 };

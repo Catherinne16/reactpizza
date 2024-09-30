@@ -13,9 +13,11 @@ import NotFound from './components/Nfound';
 import MiniCart from './components/mini-cart';
 import { PizzaProvider } from './context/PizzaContext';
 import { CartProvider } from './context/CartContext';
+import { UserProvider } from './context/UserContext';
 import { useUser } from './context/UserContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import PizzaContainer from './components/PizzaContainer';
+import RegisterWithCustomHooks from './pages/RegisterWithCustomHooks';
 import './index.css';
 
 const App = () => {
@@ -23,34 +25,44 @@ const App = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
 
   const toggleCart = () => {
-    setIsCartVisible(!isCartVisible);
+    setIsCartVisible(prev => !prev); // Mejorar la lectura al usar el valor previo
   };
+
+  function App() {
+    return (
+        <div>
+            {/* Otras rutas o componentes */}
+            <RegisterWithCustomHooks />
+        </div>
+    );
+}
 
   return (
     <Router>
-      <PizzaProvider>
-        <CartProvider>
-          <div>
-            <Navbar toggleCart={toggleCart} />
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/register" element={token ? <Navigate to="/" /> : <Register />} />
-              <Route path="/login" element={token ? <Navigate to="/" /> : <Login />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/pizza/p001" element={<Pizza />} />
-              <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-              <Route path="/404" element={<NotFound />} />
-              <Route path="*" element={<Navigate to="/404" />} />
-              <Route path="/pizza/:id" element={<Pizza />} /> {/* Ruta para los detalles de la pizza */}
-            </Routes>
-            <Footer />
-            <div className={`mini-cart-wrapper ${isCartVisible ? 'open' : ''}`}>
-              <MiniCart onClose={toggleCart} />
+      <UserProvider>
+        <PizzaProvider>
+          <CartProvider>
+            <div>
+              <Navbar toggleCart={toggleCart} />
+              <Header />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/register" element={token ? <Navigate to="/" /> : <Register />} />
+                <Route path="/login" element={token ? <Navigate to="/" /> : <Login />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/pizza/:id" element={<Pizza />} /> {/* Simplificado para manejar IDs dinámicos */}
+                <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                <Route path="/404" element={<NotFound />} />
+                <Route path="*" element={<Navigate to="/404" />} />
+              </Routes>
+              <Footer />
+              <div className={`mini-cart-wrapper ${isCartVisible ? 'open' : ''}`}>
+                <MiniCart onClose={toggleCart} />
+              </div>
             </div>
-          </div>
-        </CartProvider>
-      </PizzaProvider>
+          </CartProvider>
+        </PizzaProvider>
+      </UserProvider>
     </Router>
   );
 };

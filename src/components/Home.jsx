@@ -5,7 +5,7 @@ import CardPizza from './CardPizza';
 import '../components/home.css';
 
 const Home = () => {
-  const { pizzas2, setPizzas2 } = usePizzas(); // Obtener pizzas y función de actualización del contexto
+  const { pizzas2, setPizzas2 } = usePizzas(); 
   const { addToCart } = useCart();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ const Home = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setPizzas2(data); // Actualizar el contexto con los datos obtenidos
+        setPizzas2(data); 
       } catch (error) {
         setError(error.message);
       } finally {

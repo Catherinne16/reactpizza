@@ -7,8 +7,9 @@ import './Navbar.css';
 const Navbar = ({ toggleCart }) => {
   const { getTotal } = useCart(); 
   const total = getTotal(); 
-  const { token, logout } = useUser();
   const navigate = useNavigate();
+  const { token } = useUser();
+  const { logout } = useUser(); 
 
   const handleLogout = () => {
     logout();

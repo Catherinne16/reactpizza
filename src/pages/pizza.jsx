@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom';
 import './Pizza.css';
 
 const Pizza = () => {
-  const { id } = useParams(); // Obtén el id de la URL
+  const { id } = useParams(); 
   const [pizza, setPizza] = useState(null);
   const [error, setError] = useState(null);
   
   useEffect(() => {
     const fetchPizza = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/pizzas/p001`); // Usa el ID de la URL
+        const response = await fetch(`http://localhost:5000/api/pizzas/p001`); 
         if (!response.ok) {
           throw new Error('Error al obtener la pizza');
         }

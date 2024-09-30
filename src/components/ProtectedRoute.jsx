@@ -4,7 +4,12 @@ import { useUser } from '../context/UserContext';
 
 const ProtectedRoute = ({ children }) => {
   const { token } = useUser();
-  return token ? children : <Navigate to="/login" />;
+
+  if (!token) {
+    return <Navigate to="/login" />;
+  }
+
+  return children;
 };
 
 export default ProtectedRoute;
